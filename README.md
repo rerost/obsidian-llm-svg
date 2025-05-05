@@ -2,6 +2,8 @@
 
 This is a plugin for [Obsidian](https://obsidian.md/) that Generate SVG using generative AI and embed it in the document.
 
+https://github.com/user-attachments/assets/bcd649ab-712c-4dee-964b-254a7d0b210e
+
 ## Installation
 
 The plugin is not available in [the official Community Plugins repository](https://obsidian.md/plugins) yet.
