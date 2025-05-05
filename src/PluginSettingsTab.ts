@@ -10,7 +10,7 @@ export class PluginSettingsTab extends PluginSettingsTabBase<PluginTypes> {
 
     new SettingEx(this.containerEl)
       .setName('OpenAI API Key')
-      .setDesc('Set API Key')
+      .setDesc('Set API Key. sk-...')
       .addText((text) => {
         this.bind(text, 'apiKey');
       });
