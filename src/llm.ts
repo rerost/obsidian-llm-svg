@@ -24,7 +24,7 @@ export class SVGGenerator {
 
     const models = (res as ListModelsResponse).data
 
-    return models.filter((model) => model.id.includes('gpt')).map((model) => model.id);
+    return models.map((model) => model.id);
   }
 
   public async generateSVG(model: string, source: string): Promise<string> {

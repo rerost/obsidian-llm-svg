@@ -35,7 +35,7 @@ export class Plugin extends PluginBase<PluginTypes> {
     el.appendChild(loadingDiv)
 
     const generator = new SVGGenerator(this.settings.apiKey)
-    const svgCode = await generator.generateSVG("gpt-4o", source)
+    const svgCode = await generator.generateSVG(this.settings.model, source)
 
     const div = document.createElement('div')
     div.setAttribute("class", "llm-svg-" + sourceHash)
