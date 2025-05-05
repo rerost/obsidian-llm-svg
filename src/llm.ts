@@ -24,7 +24,7 @@ export class SVGGenerator {
 
     const models = (res as ListModelsResponse).data
 
-    return models.map((model) => model.id);
+    return models.sort((a, b) => b.created - a.created).map((model) => model.id);
   }
 
   public async generateSVG(model: string, source: string): Promise<string> {
