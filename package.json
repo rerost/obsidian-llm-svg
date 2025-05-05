@@ -1,6 +1,6 @@
 {
   "name": "llm-svg",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Generate SVG using generative AI and embed it in the document.",
   "keywords": [],
   "license": "MIT",
