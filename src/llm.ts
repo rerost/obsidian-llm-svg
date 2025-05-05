@@ -72,7 +72,7 @@ export class SVGGenerator {
     }
 
     const rawResponse = await response.json();
-    const jsonResponse = JSON.parse(rawResponse.choices[0].message.content);
+    const jsonResponse = JSON.parse((rawResponse as LLMCallResponse).choices[0]?.message.content ?? "{}");
 
     return (jsonResponse as GenerateSVGResponse).svg_code;
   }
@@ -81,6 +81,14 @@ export class SVGGenerator {
 type ListModelsResponse = {
   object: string;
   data: {id: string, object: string, created: number, owned_by: string}[];
+}
+
+type LLMCallResponse = {
+  choices: {
+    message: {
+      content: string;
+    };
+  }[];
 }
 
 type GenerateSVGResponse = {

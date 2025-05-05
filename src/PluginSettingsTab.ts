@@ -5,7 +5,7 @@ import type { PluginTypes } from './PluginTypes.ts';
 import { SVGGenerator } from './llm.ts';
 
 export class PluginSettingsTab extends PluginSettingsTabBase<PluginTypes> {
-  private svgGenerator: SVGGenerator;
+  private svgGenerator: SVGGenerator | null = null;
 
   public override display(): void {
     super.display();
@@ -24,7 +24,7 @@ export class PluginSettingsTab extends PluginSettingsTabBase<PluginTypes> {
       .setDesc('Set Model.')
       .addDropdown((dropdown) => {
         dropdown.setDisabled(false);
-        this.svgGenerator.availableModels().then((models) => {
+        this.svgGenerator?.availableModels().then((models) => {
           models.forEach((model) => {
             dropdown.addOption(model, model);
           });
