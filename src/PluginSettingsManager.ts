@@ -1,5 +1,3 @@
-import type { MaybeReturn } from 'obsidian-dev-utils/Type';
-
 import { PluginSettingsManagerBase } from 'obsidian-dev-utils/obsidian/Plugin/PluginSettingsManagerBase';
 
 import type { PluginTypes } from './PluginTypes.ts';
