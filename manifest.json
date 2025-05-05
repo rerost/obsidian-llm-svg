@@ -1,0 +1,9 @@
+{
+  "author": "rerost",
+  "authorUrl": "https://github.com/rerost/",
+  "description": "Generate SVG using generative AI and embed it in the document.",
+  "id": "llm-svg",
+  "isDesktopOnly": true,
+  "name": "Llm Svg",
+  "version": "0.0.0"
+}
