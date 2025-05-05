@@ -1,6 +1,5 @@
 import type { MarkdownPostProcessorContext } from 'obsidian';
 
-import { Notice } from 'obsidian';
 import { PluginBase } from 'obsidian-dev-utils/obsidian/Plugin/PluginBase';
 
 import type { PluginTypes } from './PluginTypes.ts';
@@ -26,7 +25,7 @@ export class Plugin extends PluginBase<PluginTypes> {
     this.registerMarkdownCodeBlockProcessor('llm-svg', this.handleSampleCodeBlockProcessor.bind(this));
   }
 
-  private handleSampleCodeBlockProcessor(source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext): void {
+  private handleSampleCodeBlockProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): void {
     console.log(source);
     el.setText(source);
   }
