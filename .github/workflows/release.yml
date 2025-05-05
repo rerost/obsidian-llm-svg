@@ -29,7 +29,10 @@ jobs:
         run: |
           tag="${GITHUB_REF#refs/tags/}"
 
-          jq --arg tag "$tag" '.version = $tag' dist/build/manifest.json > dist/build/manifest.tmp && mv dist/build/manifest.tmp dist/build/manifest.json
+          jq --arg tag "$tag" \
+            '.version = $tag | .minAppVersion = "1.8.0"' \
+            dist/build/manifest.json > dist/build/manifest.tmp && \
+            mv dist/build/manifest.tmp dist/build/manifest.json
 
           gh release create "$tag" \
             --title="$tag" \
