@@ -1,4 +1,4 @@
-# Llm Svg
+# LLM SVG
 
 This is a plugin for [Obsidian](https://obsidian.md/) that Generate SVG using generative AI and embed it in the document.
 
