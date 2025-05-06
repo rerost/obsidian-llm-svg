@@ -5,6 +5,6 @@
   "id": "llm-svg",
   "isDesktopOnly": true,
   "name": "LLM SVG",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "minAppVersion": "1.8.0"
 }
