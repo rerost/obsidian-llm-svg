@@ -42,8 +42,8 @@ export class Plugin extends PluginBase<PluginTypes> {
     const div = target.createEl('div', { cls: "llm-svg-" + sourceHash })
     div.appendChild(svgElement);
 
-    el.appendChild(div);
-    el.removeChild(loadingDiv)
+    target.appendChild(div);
+    target.removeChild(loadingDiv)
   }
 }
 

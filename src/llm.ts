@@ -1,3 +1,5 @@
+import { requestUrl } from 'obsidian'
+
 export class SVGGenerator {
   private apiKey: string;
 
@@ -8,22 +10,21 @@ export class SVGGenerator {
   }
 
   public async availableModels(): Promise<string[]> {
-    const response = await fetch('https://api.openai.com/v1/models', {
+    const response = await requestUrl({
+      url: 'https://api.openai.com/v1/models',
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${this.apiKey}`
       }
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`OpenAI API request failed: ${response.status} ${response.statusText} - ${errorText}`);
+    if (response.status !== 200) {
+      const errorText = response.text;
+      throw new Error(`OpenAI API request failed: ${response.status} - ${errorText}`);
     }
 
-    const res = await response.json();
-
+    const res = response.json;
     const models = (res as ListModelsResponse).data
-
     return models.sort((a, b) => b.created - a.created).map((model) => model.id);
   }
 
@@ -45,7 +46,8 @@ export class SVGGenerator {
       "additionalProperties": false
     }
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await requestUrl({
+      url: 'https://api.openai.com/v1/chat/completions',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,15 +67,14 @@ export class SVGGenerator {
       })
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
+    if (response.status !== 200) {
+      const errorText = response.text;
       console.error('OpenAI API request failed. Status:', response.status, 'Response:', errorText);
-      throw new Error(`OpenAI API request failed: ${response.status} ${response.statusText} - ${errorText}`);
+      throw new Error(`OpenAI API request failed: ${response.status} - ${errorText}`);
     }
 
-    const rawResponse = await response.json();
-    const jsonResponse = JSON.parse((rawResponse as LLMCallResponse).choices[0]?.message.content ?? "{}");
-
+    const rawResponse = response.json;
+    const jsonResponse = JSON.parse((rawResponse as LLMCallResponse).choices[0]?.message.content ?? "{}" );
     return (jsonResponse as GenerateSVGResponse).svg_code;
   }
 }
